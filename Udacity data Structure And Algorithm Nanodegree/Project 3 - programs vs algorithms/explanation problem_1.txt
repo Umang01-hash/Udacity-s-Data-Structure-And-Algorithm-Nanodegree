@@ -1,0 +1,15 @@
+Problem 1
+The principle of this algorithm is to implement a variance of the binary search,
+because of the desired time complexity. This time, though, rather than counting with an already sorted array,
+ we use the natural consecution to use as our imaginary array;
+ the implementation relies on dividing the search space in two parts and checking at when if the mid point power of two is larger or smaller than the given number
+ (as in an exceedingly dictionary, is that the found word, bigger or smaller than our goal).
+ Additionally, there's the inclusion of a touch optimization trick, this can be the very fact that the root of a number (starting from 2) is half or less, 
+thus giving us a _speed boost by starting with end = number // 2.
+
+
+TIME COMPLEXITY:   O(log(n))
+
+Space Complexity: O(1)
+
+Memory use is independent to the input. Each loop run is independent.

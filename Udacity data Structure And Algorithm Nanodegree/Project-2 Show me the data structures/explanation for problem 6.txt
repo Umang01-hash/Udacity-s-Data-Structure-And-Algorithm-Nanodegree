@@ -1,0 +1,16 @@
+The class Node has 2 functions  initialize and represent as well as 
+class LinkedList have the functions to initialize,append.represent and size .
+The Union and the intersection function do their respective task by taking arguements of both linked list.
+
+To find union of two linked lists,  using an list. First, I add elements of the first linked list to the list. Second, I check if elements of the second linked list are within the list or not. If they're not within the list, the weather are added otherwise ignored.
+
+Time complexity
+The time complexity of the union function is quadratic because for every element within the linked list, there's a python operational , which is O(n) by itself, to check if they already exits in the list or not.
+
+But, the time complexity of the union function is O(n^3) because, there are two while loops that loop over the weather of the 2 linked lists, plus there's Python in operation that checks for every element if they occur during a temporary list or not.
+
+Other operations are---(1) adding elements from linked list to the list, which is linear. (2) there's another operation that reads elements from the list and add them to a linked list, which is additionally linear.
+
+Space complexity
+The space complexity for union (and also for intersection) functions is O(n), because for both operations there is a temporary list t, which can grow upto the size of the two input linked lists. Also there are two nodes (i.e. node1 and node2) but these should be O(1). So overall the space complexity of union is O(n), and therefore the space complexity of intersection is O(n) too.
+

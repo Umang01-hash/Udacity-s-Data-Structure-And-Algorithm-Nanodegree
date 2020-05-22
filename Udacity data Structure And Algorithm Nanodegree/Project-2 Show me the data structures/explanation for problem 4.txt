@@ -1,0 +1,14 @@
+The Active directory probelm is solved using the list[] data structure in python. 
+The class Group has functions to add and get the users and groups simply. The empty list groups and users are also initialized here.
+A function USerinGroup is there that accepts user -  string as well as group to check membership against as arguement.
+the function UserinGroup returns the True/False if the user is found in group.
+
+*The Group arg. can't be none
+* Group arg must be Group type
+
+Time Complexity:
+
+O (n * m) -> iterating among m times per each n initial group
+
+
+Space  Complexity :  -> O(n) -> being n the max recursion depth in the initial group

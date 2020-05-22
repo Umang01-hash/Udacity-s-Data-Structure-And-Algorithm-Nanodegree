@@ -1,0 +1,136 @@
+The below runtime analyses are Worst Case Big-O approximations.
+
+Reading data
+Reading data is required for all the below tasks, so we will address it first.
+
+Notation: (O(n^2))
+
+(O(n^2)): Reading two files are based on inputs (complexity-of-f-in-python.
+Task 0
+What is the primary record of texts and what's the last record of calls?
+
+print(f"First record of texts, {texts[0][0]} texts {texts[0][1]} at time "
+ f"{texts[0][2]}.")
+
+total_calls = len(calls) - 1
+
+print(f"Last record of calls, {calls[total_calls][0]} called {calls[total_calls][1]} "
+ f"at {calls[total_calls][2]}, lasting {calls[total_calls][3]} seconds.")
+Notation: (O(1))
+
+The operations are not dependent on iteration.
+
+Task 1
+How many different telephone numbers are there within the records?
+
+numbers = set()
+
+for text, call in zip(texts, calls):
+ for i in range(0, 2):
+ numbers.add(text[i])
+ numbers.add(call[i])
+
+print(f"There are {len(numbers)} different telephone numbers within the records.")
+Notation: (O(n+logn))
+
+(O(n+logn)): Two explicit for loops. One is logarithmic.
+Task 2
+Which phone number spent the longest time on the phone during the period? Don’t forget that point spent answering a call is additionally time spent on the phone.
+
+dials = {call[0]: int(call[3]) for call in calls}
+receives = {call[1]: int(call[3]) for call in calls}
+receives_ex_dials = dict()
+
+for (k, v), (k2, v2) in zip(dials.items(), receives.items()):
+ if k in receives.keys():
+ dials[k] = v + receives[k]
+ if k2 not in dials.keys():
+ receives_ex_dials[k2] = v2
+
+dials.update(receives_ex_dials)
+
+max_phone = max(dials, key=lambda key: dials[key])
+
+print(f"{max_phone} spent the longest time, {dials[max_phone]} seconds, on the "
+ f"phone during September 2016.")
+Notation: (O(n^6))
+
+(O(n^2)): Two set() comprehensions
+
+(O(n)): One explicit for loop (should iterating over zip() also be included? See task 4, which shows is (O(n)).)
+
+(O(n^2)): Two in operations inside the for loop
+
+(O(n)): max() (how-efficient-is-pythons-max-function)
+
+Note that dictionary update() method is expected to be (O(1)) (time-complexity-of-python-dictionary-get-update-always-o1)
+
+Task 3
+The area code for fixed line telephones in Bangalore is “(080)”. Fixed line numbers include parentheses, so Bangalore numbers have the shape (080)xxxxxxx.)
+
+Part A: Find all of the world codes and mobile prefixes called by people in Bangalore. - Fixed lines start with a neighborhood code enclosed in brackets. The area codes vary long but always begin with 0. - Mobile numbers haven't any parentheses, but have an area within the middle of the amount to assist readability. The prefix of a mobile number is its first four digits, and that they always start with 7, 8 or 9. - Telemarketers’ numbers haven't any parentheses or space, but they begin with the world code 140.
+
+Part B: What percentage of calls from fixed lines in Bangalore are made to fixed lines also in Bangalore? In other words, of all the calls made up of variety starting with “(080)”, what percentage of those calls were made to variety also starting with “(080)”?
+
+bangalore_calls = [call for call in calls if call[0].startswith("(080)")]
+
+bangalore_dialed = [call[1] for call in bangalore_calls]
+
+called_areas = []
+
+for call in bangalore_dialed:
+ if re.search("\(\w+\)", call):
+ called_areas.append(re.search(r'(\(.*?\))', call).group(1))
+ elif re.search(r'(^[7|8|9])', call):
+ called_areas.append(call[0:4])
+ clean_calls = sorted(list(set(called_areas)))
+ print("The numbers called by people in Bangalore have codes:")
+ for call in clean_calls:
+ print(call)
+
+total_calls = len(bangalore_calls)
+
+bangalore_to_bangalore = len([call for call in bangalore_calls if call[
+ 1].startswith("(080)")])
+
+percentage = round(bangalore_to_bangalore / total_calls, 4) * 100
+
+print(f"{percentage} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")
+Notation: (O(n + nlogn))
+
+(O(n)): One explicit for loop
+
+Regex is typically (O(n)) (what-is-the-complexity-of-regular-expression), but we are checking with an if statement, so no sequencing is needed.
+
+sorted() introduces (O(nlogn)), according to python documentation.
+
+Task 4
+The telephone company wants to identify numbers that might be doing telephone marketing. Create a group of possible telemarketers: these are numbers that make outgoing calls but never send texts, receive texts or receive incoming calls.
+
+dials = {call[0] for call in calls}
+receives = [call[1] for call in calls]
+real_people = set()
+
+for text, receive in zip(texts, receives):
+ for i in range(0, 2):
+ real_people.add(text[i])
+ real_people.add(receive)
+
+potential_telemarketers = {call for call in dials if call not in real_people}
+potential_telemarketers = sorted(list(potential_telemarketers))
+
+print(f"These numbers could be telemarketers: {potential_telemarketers}")
+print(f"Total potential telemarketers: {len(potential_telemarketers)}")
+Notation: (n^6+nlogn+logn)
+
+(O(n^2)): Two set() comprehension
+
+(O(n)): One list() comprehension
+
+(O(n)): One in operation inside list() comprehension
+
+(O(n+logn)): Two explicit for loops. One is logarithmic.
+
+(O(nlogn)): sorted()
+
+(O(n)): Iterating on zip() object (what-is-the-time-complexity-of-zip-in-python)

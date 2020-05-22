@@ -1,0 +1,34 @@
+Request Routing web server
+
+There are 3 classes:
+
+1.  Router: which personally i feel makes no sense, is simply like well named, basically could be a RouteTrie wrapper
+2.  RouteTrie: All the things is finished here:
+
+                         Insert:
+
+Iterate through the trail parts path.split by '/'
+insert the trail part within the node
+update the node with the created by the new path part for the following iteration
+When there are not any more path parts, assign the handler
+
+Find:
+
+                       Find a path handler
+Iterate through the trail parts path.split by '/'
+on each iteration update the node with the trail part
+when there are not any more path parts, return the handler
+3.  RouteTrieNode: container of the Dictionary with other path parts and a handler with None as default
+
+                                      Insert:
+This checks if the part is already within the node children, if so, a brand new RouteTrieNode is formed with a key equals to the trail part
+This method makes no sense thanks to the defaultdict
+
+                                  Time Complexity:
+
+insert: O(n) The insert operation saying that n = each '/', takes O(n) because there's one iteration per path part
+find: O(n) Almost the identical process, iterating through input only once, O(n)
+
+                                 Space Complexity:
+insert: path_parts occupies n but splitted, so takes O(n)
+find: path_parts occupies n but splitted, so takes O(n)

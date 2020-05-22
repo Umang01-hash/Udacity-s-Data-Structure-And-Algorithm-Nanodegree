@@ -1,0 +1,29 @@
+Problem 5
+For this trie i made a decision to use a defaultDict to store the youngsters which made for cleaner looking code.
+
+Find Method
+Time Complexity: O(n)
+
+Each character has to be iterated through
+
+Space Complexity: O(1)
+
+No memory is allocated
+
+Insert Method
+Time Complexity: O(n)
+
+Each character has to be iterated through
+
+Space Complexity: O(n)
+
+n characters must be allocated
+
+Suffixes Method
+Time Complexity: O(n)
+
+Each character has to be iterated through
+
+Space Complexity: O(1)
+
+No memory is allocated

@@ -1,0 +1,15 @@
+Rearrange Array Elements
+
+Commutative law of addition says it doesn't matter what order you add up numbers as they're going to always sum to the identical answer. So rearranging array elements will always yield the sum of the digits irrespective of order. intrinsically it's possible to rearrange the digits in multiple ways and always get the sum of the digits.
+
+Divides the list in half and uses a recursive merge sort to make two lists of digits.Divide and Conquer Algorithm: O(n log n)
+Divide array into smaller arrays until each small array has one
+position and then merge these small arrays into bigger ones until
+one single array exist that is sorted
+
+
+Big O Space Complexity
+Merge sort space complexity is O(n) because it must create a duplicate of the complete list.
+
+Big O Time Complexity
+Merge sort includes a worst case time complexity of O(n log(n)).

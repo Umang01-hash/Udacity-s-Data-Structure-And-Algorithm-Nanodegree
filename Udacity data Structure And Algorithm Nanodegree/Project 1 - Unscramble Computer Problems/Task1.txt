@@ -1,0 +1,111 @@
+Task 1
+Summary:
+
+Big O: O(n)
+Lines (N): a hundred,691
+Time estimate: ~100,691ns = ~100µs = ~0.100ms = ~.000100s
+Given
+len(texts) = 9072
+len(calls) = 5312
+Total records = fourteen,384
+Each list has two sublists of phone numbers, i.e. occupation from + occupation to
+Total phone numbers: twenty eight,768
+Worst case: all phone numbers ar distinctive.
+
+Design clarification
+All of the distinct phone numbers ar command in a very international variable known as distinct_phone_numbers. I selected a collection knowledge kind for this instrumentality. i will make a case for why below.
+
+The algorithmic rule is within the operate known as get_distinct_phone_numbers. within the style of this algorithmic rule, I had to think about the challenges related to extracting all of the phone numbers from each lists (i.e. texts and calls). What do I mean? Here ar the challenges:
+
+Each list holds sublists for every record.
+There ar two phone numbers in every record of every list:
+"Calling from" signal is at index zero.
+"Calling to" signal is at index one.
+Given that there ar two columns of phone numbers, I selected to ingeminate through every record so add every signal (index zero and 1) to the distinct_phone_numbers set, thereby permitting the set to handle excluding duplicates and adding solely distinct strings into the gathering.
+
+Why I selected a collection knowledge kind
+As I noted on top of, I selected a collection organisation because the instrumentality to carry the distinct phone numbers. Why?
+
+Its native purpose is to carry distinct things.
+It's a hashtable that has mutable strategies, like add and clear.
+As a hashtable, we tend to get performance gains over a
+In this task, i am taking advantage of the hashtable performance compared to implementing distinct_phone_numbers as a listing knowledge kind. Here could be an implementation wherever distinct_phone_numbers is a international list:
+
+def get_distinct_phone_numbers(records):
+O(2) indices = range(2) #O(2)
+O(n) for record in records: #O(n)
+for i in indices: #O(2)
+if record[i] not in distinct_phone_numbers: #Worst case O(n^2) wherever O(1) get + O(len(m)), wherever m is that the `distinct_phone_numbers` list
+distinct_phone_numbers.append(record[i]) #O(2) = (1) get + O(1) append()
+In the worst case, distinct_phone_numbers list grows by two for every record iteration. meaning massive O for a listing implementation would be between O(len(d)n) or the terribly worst case of O(n^2).
+
+By employing a set knowledge kind for the distinct_phone_numbers, the large O for the algorithmic rule is O(n).
+
+Why Store Range(2) in a very Variable?
+I selected to tug the range(2) out of the record loop to avoid making the vary object over and once again on every iteration. i am acquainted enough with Python's internals to grasp if Python is sensible enough to form it once and reprocess once within an equivalent scope block. But if no, then propulsion it out of the loop ensures that just one object is made, i.e. not dependent upon n.
+
+Time quality outline
+The Big O time quality for Task zero is O(n).
+
+Worst case:
+
+All phone numbers ar distinctive.
+In that worst case, there'll be (len(calls) + len(texts) x 2) distinct phonephone numbers.
+Analysis
+main()
+Description: This operate is that the main controller for the task. It invokes get_distinct_phone_numbers() for every of the lists, i.e. calls and texts, to create a instrumentality of distinct phone numbers. Then it prints the message with the quantity of distinct phone numbers.
+
+Big O: the large O time quality is O(n).
+
+def main():
+get_distinct_phone_numbers(texts) #O(n)
+get_distinct_phone_numbers(calls) #O(n)
+
+print("There ar completely different phonephone numbers within the records.".format(len(distinct_phone_numbers))) #O(1) len + O(1) format + O(1) print
+T1 = O(n) + O(n) + O(1) + O(1) + O(1) = O(2n) + c1 = 2n <- drop constant = n
+
+N = O(n)
+
+get_distinct_phone_numbers()
+Description: ingeminate through the two phone numbers {of every|of every} record and add each into the distinct instrumentality. because the the instrumentality could be a set, it handles excluding duplicates.
+
+Big O: the large O time quality is O(n).
+
+def get_distinct_phone_numbers(records):
+international distinct_phone_numbers
+
+for record in records: #O(n)
+for i in range(2): #O(2)
+distinct_phone_numbers.add(record[i]) #O(1) get + O(1) .add()
+T1 = n x ( two x ( O(1) + O(1) ) ) = n x (2c1 + 2c2) = n x 2c1 + n x 2c2 = n + n <- drop the constants = 2n <- drop the constant = n
+
+N = O(n)
+
+Number of directions dead - Worst Case
+get_distinct_phone_numbers()
+T1 = c1 + n x three = n x (1 + two x ( one + one + one ) = n x seven
+
+T1 = (7 x nine,072) + (7 x five,312) = 63,504 + 37,184 = 100,688
+
+texts calls N code
+9,072 5,312 O(n) for record in records:
+18,144 10,624 O(2) x O(n) for i in range(2):
+18,144 10,624 O(1) x O(2n) record[i]
+18,144 10,624 O(1) x O(2n) distinct_phone_numbers.add()
+-------: -------: ------------------------
+63,504 37,184 totals
+Total Instructions: a hundred,688
+
+main()
+T2 = O(n) + O(n) + O(1) + O(1) + O(1) = O(2n) + c1 = 2n <- drop constant = n
+
+T2 = (7 x nine,072) + (7 x five,312) = 63,504 + 37,184 = 100,688
+
+Instructions N code
+63,504 | O(n) | `get_distinct_phone_numbers(texts)`
+37,184 | O(n) | `get_distinct_phone_numbers(calls)`
+three | O(3) | `print().format()`
+-------------:|--------|---------
+100,691 | |
+
+This task runs a hundred,691 directions within the worst case for a execution time estimate of ~100,691ns or ~100µs.

@@ -1,0 +1,10 @@
+Data Structure used == Array!
+The Function rotated_array_sorted takes arguement array and the target number to search and 
+in return give a recursive call to function RecursiveArraysearch that takes the array , target number,start index and last index as arguement.
+The function RecursiveArraysearch first compares the logical condition if start index is > last index and return -1 if the condition is true.
+If the above stated condition is flase the function uses the divide and conquer technique to sort the array suing recursive calls.
+
+       Time and Space Complexity
+
+      Append operation in arrays takes O(n) being n the number of blocks 
+      runtime complexity -  O(log n).

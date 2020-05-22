@@ -1,0 +1,14 @@
+			BLOCK CHAIN
+Hashlib is used to calculate hash for all data and datetime to calculate the current GMT.
+The calc_hash function calculates the hash value
+and the _repr_ structures how the output will be presented.
+the class BlockChain has the functions to add and represent the block by checking the conditions
+It appends the block to the list and increments the lenth of block chain by 1.
+
+The block to be added retreives the block's hash,which links them together.
+
+TIME COMPLEXITY :
+O(1) since all we are doing is adding blocks with statements.
+
+SPACE COMPLEXITY:
+O(n) since I need to store all blocks in a blockchain list.  

@@ -1,0 +1,17 @@
+DUTCH NATIONAL FLAG PROBlem   |
+______________________________|
+
+Separating 0s, 1s, and 2s, from an unsorted array of said values requires a partitioning variety of approach like quicksort but, implemented using principles from binary search with lo and hi to focus on mid values which we either increment or decrement supported the mid value.
+
+-- If a mid value is 0 then we swap lo and mid moving them toward the LEFT side of the 1s group and incrementing both pointers.
+
+-- Continuing on, if mid value is 2 then we swap mid and hi values toward the proper side of the 1s and decrement hi value. Finally all else, we just increment mid by 1.
+
+-- Once mid's value has surpassed hi's value we end the while loop and return the ultimate segregated list of 0s, 1s and 2s in proper order.
+
+Time complexity are O(N) thanks to our loop iteration over "N" elements with space complexity as O(1) given the quantity of "N" elements to store from our array.
+
+assign three variables - O(1) * 3
+while loop - O(N)
+if conditionals and swaps - O(1) * 7
+total - O(N)

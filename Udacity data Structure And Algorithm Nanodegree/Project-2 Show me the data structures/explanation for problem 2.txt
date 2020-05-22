@@ -1,0 +1,5 @@
+a Recursive function findFiles() is coded for this problem that takes  the suffix, path and the list of required files  as arguement . Each time a file ending with .c is found it is appended to the list
+
+Time complexity: O(depth * Average no. of directories in each level)
+
+Space complexity: O(depth)
